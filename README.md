@@ -8,7 +8,7 @@ A Windows 7 Aero look for Windows 11, built with [Windhawk](https://windhawk.net
 | Start menu | Open-Shell | Windows 7 style, Windows Aero skin (white program list, glass links pane, Shut down button) |
 | Search window | Windhawk: Windows 11 Start Menu Styler | Blue Aero glass gradient with diagonal shine, white text, Win7 hover highlight |
 | Windows 11 Start menu (Shift+click) | Windhawk: Windows 11 Start Menu Styler | Accent-tinted Aero glass with shine |
-| Notification center, quick settings, calendar, toasts | Windhawk: Windows 11 Notification Center Styler | Accent-tinted Aero glass, white edge |
+| Notification center, quick settings, calendar, toasts | Windhawk: Windows 11 Notification Center Styler | Blue Aero glass with blue gradient and diagonal shine, white Win7 edges, frosted notification cards |
 
 ## Requirements
 
@@ -48,6 +48,9 @@ In Windhawk, open a styler mod's **Settings** and edit **styleConstants**:
 | `radius` | Corner roundness. Win7 used about 6. |
 | `searchBlue` | Tint of the search window glass. |
 | `searchGlass` | Search window blur brush. Change `TintOpacity` to adjust transparency. |
+| `notifGlass` | Notification center blur brush (uses `searchBlue` as its tint). |
+| `blueGloss` | Blue diagonal gradient with shine, layered on notification center panels. |
+| `blueGlossLower` | Vertical blue gradient for the lower notification list. |
 
 The search window's blue gradient is in the `#root` entry of **webContentStyles** in Start Menu Styler.
 

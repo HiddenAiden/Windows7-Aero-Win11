@@ -13,7 +13,13 @@ $aeroConstants = @(
     'pressed=<LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#33FFFFFF" Offset="0"/><GradientStop Color="#66FFFFFF" Offset="1"/></LinearGradientBrush>',
     'transparent=<SolidColorBrush Color="Transparent"/>',
     'searchBlue=#FF2B6CC4',
-    'searchGlass=<WindhawkBlur BlurAmount="$aeroBlur" TintOpacity="0.55" TintColor="$searchBlue" />'
+    'searchGlass=<WindhawkBlur BlurAmount="$aeroBlur" TintOpacity="0.55" TintColor="$searchBlue" />',
+    'notifGlass=<WindhawkBlur BlurAmount="$aeroBlur" TintOpacity="0.35" TintColor="$searchBlue" />',
+    'blueGloss=<LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#7898C8F2" Offset="0"/><GradientStop Color="#5070AAE6" Offset="0.3"/><GradientStop Color="#38407CC8" Offset="0.42"/><GradientStop Color="#5A7EAEE4" Offset="0.48"/><GradientStop Color="#383C78C4" Offset="0.6"/><GradientStop Color="#44306AB8" Offset="0.8"/><GradientStop Color="#58204E9C" Offset="1"/></LinearGradientBrush>',
+    'blueGlossLower=<LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#3C5A96DC" Offset="0"/><GradientStop Color="#38407CC8" Offset="0.5"/><GradientStop Color="#58204E9C" Offset="1"/></LinearGradientBrush>',
+    'footerGloss=<LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#40FFFFFF" Offset="0"/><GradientStop Color="#18FFFFFF" Offset="0.5"/><GradientStop Color="#30204E9C" Offset="1"/></LinearGradientBrush>',
+    'win7Edge=<SolidColorBrush Color="#99FFFFFF"/>',
+    'win7Hover=<LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#33FFFFFF" Offset="0"/><GradientStop Color="#14FFFFFF" Offset="0.5"/><GradientStop Color="#22FFFFFF" Offset="1"/></LinearGradientBrush>'
 )
 
 $startStyles = [ordered]@{
@@ -96,29 +102,32 @@ $startStyles = [ordered]@{
 }
 
 $notifStyles = [ordered]@{
-    'Grid#NotificationCenterGrid' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'Grid#CalendarCenterGrid' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'Grid#ControlCenterRegion' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'Grid#MediaTransportControlsRegion' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'Border#ToastBackgroundBorder, Border#ToastBackgroundBorder2' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'Border#JumpListRestyledAcrylic' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius', 'Margin=-2,-2,-2,-2')
-    'MenuFlyoutPresenter > Border' = @('Background:=$aero', 'BorderBrush:=<SolidColorBrush Color="$glassEdge"/>', 'BorderThickness=1', 'CornerRadius=$radius')
-    'ScrollViewer#CalendarControlScrollViewer' = @('Background:=$transparent', 'BorderThickness=0')
+    'Grid#NotificationCenterGrid' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Grid#CalendarCenterGrid' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Grid#ControlCenterRegion' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Grid#MediaTransportControlsRegion' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Border#ToastBackgroundBorder' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Border#ToastBackgroundBorder2' = @('Background:=$blueGloss', 'BorderThickness=0', 'CornerRadius=$radius')
+    'Border#JumpListRestyledAcrylic' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius', 'Margin=-2,-2,-2,-2')
+    'MenuFlyoutPresenter > Border' = @('Background:=$notifGlass', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=$radius')
+    'Grid#NotificationCenterTopBanner' = @('Background:=$blueGloss', 'CornerRadius=6,6,0,0')
+    'ScrollViewer#ListContent' = @('Background:=$blueGlossLower', 'CornerRadius=0,0,6,6')
+    'ScrollViewer#CalendarControlScrollViewer' = @('Background:=$blueGloss', 'BorderThickness=0', 'CornerRadius=$radius')
     'Border#CalendarHeaderMinimizedOverlay' = @('Background:=$transparent', 'BorderThickness=0')
     'ActionCenter.FocusSessionControl#FocusSessionControl > Grid#FocusGrid' = @('Background:=$transparent', 'BorderThickness=0')
-    'Grid#L1Grid > Border' = @('Background:=$transparent', 'BorderThickness=0')
-    'Grid#MediaTransportControlsRoot' = @('Background:=$transparent')
+    'Grid#L1Grid > Border' = @('Background:=$blueGloss', 'BorderThickness=0', 'CornerRadius=$radius')
+    'Grid#MediaTransportControlsRoot' = @('Background:=$blueGloss', 'CornerRadius=$radius')
     'ContentPresenter#PageContent' = @('Background:=$transparent')
-    'ContentPresenter#PageContent > Grid > Border' = @('Background:=$transparent')
+    'ContentPresenter#PageContent > Grid > Border' = @('Background:=$blueGloss', 'CornerRadius=$radius')
     'QuickActions.ControlCenter.AccessibleWindow#PageWindow > ContentPresenter > Grid#FullScreenPageRoot' = @('Background:=$transparent')
     'QuickActions.ControlCenter.AccessibleWindow#PageWindow > ContentPresenter > Grid#FullScreenPageRoot > ContentPresenter#PageHeader' = @('Background:=$transparent')
-    'ScrollViewer#ListContent' = @('Background:=$transparent')
     'ActionCenter.FlexibleToastView#FlexibleNormalToastView' = @('Background:=$transparent')
     'ActionCenter.FlexibleItemView' = @('CornerRadius=$radius')
+    'ActionCenter.NotificationListViewItem' = @('Background:=$win7Hover', 'BorderBrush:=$win7Edge', 'BorderThickness=1', 'CornerRadius=3')
     'JumpViewUI.SystemItemListViewItem > Grid#LayoutRoot > Border#BackgroundBorder' = @('Background:=$transparent', 'CornerRadius=3')
     'JumpViewUI.JumpListListViewItem > Grid#LayoutRoot > Border#BackgroundBorder' = @('CornerRadius=3')
     'ContentControl#TogglesGroup > ContentPresenter > ControlCenter.PaginatedGridView > Grid' = @('BorderThickness=0')
-    'Grid#FooterGrid' = @('Background:=$transparent', 'BorderThickness=0')
+    'Grid#FooterGrid' = @('Background:=$footerGloss', 'BorderBrush:=$win7Edge', 'BorderThickness=0,1,0,0', 'CornerRadius=0,0,6,6')
 }
 
 $searchStyles = [ordered]@{
